@@ -43,7 +43,6 @@ function drupanium_debug_user_page_results($uid) {
   $output = "";
   
   // Get the URI
-  // MODIFY THIS TO YOUR NEEDS
   $uri = variable_get("drupanium_user") . $uid . '.json';
   
   // Print the URI to the screen

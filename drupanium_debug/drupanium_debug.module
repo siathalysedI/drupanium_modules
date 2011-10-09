@@ -90,6 +90,17 @@ function drupanium_debug_menu() {
     'file' => 'views.inc',
   );
   
+  // Login
+  $items['drupanium/debug/login'] = array(
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupanium_debug_user_login_page'),
+    'access callback' => TRUE,
+    'title' => 'Login',
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'login.inc',
+  );
+  
   return $items;
 }
 
@@ -118,6 +129,13 @@ function drupanium_debug_intro_page($form) {
     '#title' => t("URI to REST Server / User Get Resource"),
     '#default_value' => variable_get("drupanium_user", 'http://example.com/api/rest/user/'),
     '#description' => t("Enter the full URI to the REST Server and user get resource")
+  );
+  
+  $form['drupanium_user_login'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / Login Resource"),
+    '#default_value' => variable_get("drupanium_user_login", 'http://example.com/api/rest/user/login/'),
+    '#description' => t("Example: http://example.com/api/rest/user/login")
   );
   
   $form['drupanium_views'] = array(

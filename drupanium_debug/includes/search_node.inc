@@ -43,7 +43,6 @@ function drupanium_debug_search_node_page_results($keys) {
   $output = "";
   
   // Get the URI
-  // MODIFY THIS TO YOUR NEEDS
   $uri = variable_get("drupanium_search_node") . "?keys=" . $keys;
   
   // Print the URI to the screen

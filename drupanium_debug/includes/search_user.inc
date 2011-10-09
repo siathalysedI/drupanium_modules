@@ -43,7 +43,6 @@ function drupanium_debug_search_user_page_results($keys) {
   $output = "";
   
   // Get the URI
-  // MODIFY THIS TO YOUR NEEDS
   $uri = variable_get("drupanium_search_user") . "?keys=" . $keys;
   
   // Print the URI to the screen
