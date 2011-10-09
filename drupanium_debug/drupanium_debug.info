@@ -1,0 +1,5 @@
+name = Drupanium Debugger
+description = Connects to a REST server and returns data so it is manipulated with PHP
+core = 7.x
+package = "Drupanium"
+dependencies[] = devel

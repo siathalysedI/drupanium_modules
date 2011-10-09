@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function drupanium_debug_menu() {
+  // General configuration
+  $items['drupanium/debug'] = array(
+    'title' => 'Drupanium debug',
+    'description' => 'Debug drupanium',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupanium_debug_intro_page'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  
+  $items['drupanium/debug/intro'] = array(
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'Debug configuration',
+    'weight' => -100,
+  );
+  
+  // Search node
+  $items['drupanium/debug/search_node'] = array(
+    'type' => MENU_LOCAL_TASK,
+    'title' => 'Search node',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("drupanium_debug_search_node_page"),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'search_node.inc',
+  );
+  
+  $items['drupanium/debug/search_node/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupanium_debug_search_node_page_results',
+    'page arguments' => array(3),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'search_node.inc',
+  );
+  
+  // Search user 
+  $items['drupanium/debug/search_user'] = array(
+    'type' => MENU_LOCAL_TASK,
+    'title' => 'Search users',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("drupanium_debug_search_user_page"),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'search_user.inc',
+  );
+  
+  $items['drupanium/debug/search_user/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupanium_debug_search_user_page_results',
+    'page arguments' => array(3),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'search_user.inc',
+  );
+  
+  // Search user 
+  $items['drupanium/debug/user'] = array(
+    'type' => MENU_LOCAL_TASK,
+    'title' => 'Get user',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("drupanium_debug_user_page"),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'user.inc',
+  );
+  
+  $items['drupanium/debug/user/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupanium_debug_user_page_results',
+    'page arguments' => array(3),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'user.inc',
+  );
+  
+  // Views
+  $items['drupanium/debug/views'] = array(
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'drupanium_debug_views_page',
+    'access callback' => TRUE,
+    'title' => 'Views',
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'views.inc',
+  );
+  
+  return $items;
+}
+
+/**
+ * Default and intro callback
+ */
+function drupanium_debug_intro_page($form) {
+  $form = array();
+  
+  $form['drupanium_search_node'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / Search Node Resource"),
+    '#default_value' => variable_get("drupanium_search_node", 'http://example.com/api/rest/search_node/retrieve.json'),
+    '#description' => t("Enter the full URI to the REST Server and the search node retrieve resource")
+  );
+  
+  $form['drupanium_search_user'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / Search User Resource"),
+    '#default_value' => variable_get("drupanium_search_user", 'http://example.com/api/rest/search_user/retrieve.json'),
+    '#description' => t("Enter the full URI to the REST Server and the search user retrieve resource")
+  );
+  
+  $form['drupanium_user'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / User Get Resource"),
+    '#default_value' => variable_get("drupanium_user", 'http://example.com/api/rest/user/'),
+    '#description' => t("Enter the full URI to the REST Server and user get resource")
+  );
+  
+  $form['drupanium_views'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / Views Resource"),
+    '#default_value' => variable_get("drupanium_views", 'http://example.com/api/rest/views/some_view_name.json'),
+    '#description' => t("Enter the full URI to the REST Server and the views retrieve resource")
+  );
+  
+  return system_settings_form($form);
+}
+
+
