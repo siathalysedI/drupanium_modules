@@ -101,6 +101,17 @@ function drupanium_debug_menu() {
     'file' => 'login.inc',
   );
   
+  // Login
+  $items['drupanium/debug/create_content'] = array(
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupanium_debug_create_content_page'),
+    'access callback' => TRUE,
+    'title' => 'Create content',
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'create_content.inc',
+  );
+  
   return $items;
 }
 
@@ -143,6 +154,13 @@ function drupanium_debug_intro_page($form) {
     '#title' => t("URI to REST Server / Views Resource"),
     '#default_value' => variable_get("drupanium_views", 'http://example.com/api/rest/views/some_view_name.json'),
     '#description' => t("Enter the full URI to the REST Server and the views retrieve resource")
+  );
+  
+  $form['drupanium_create_content'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / Create content"),
+    '#default_value' => variable_get("drupanium_create_content", 'http://example.com/api/rest/node/create/'),
+    '#description' => t("Enter the full URI to the REST Server and the create node resource")
   );
   
   return system_settings_form($form);

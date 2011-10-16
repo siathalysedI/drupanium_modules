@@ -38,7 +38,7 @@ function drupanium_debug_user_login_page_submit(&$form, &$form_state) {
   
   drupal_set_message("Trying to login using username " . $username . " and password " . $password);
     
-    // Get the URI
+  // Get the URI
   $uri = variable_get("drupanium_user_login");
   
   // Print the URI to the screen
