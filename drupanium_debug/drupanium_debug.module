@@ -5,7 +5,7 @@
  */
 function drupanium_debug_menu() {
   // General configuration
-  $items['drupanium/debug'] = array(
+  $items['drupanium'] = array(
     'title' => 'Drupanium debug',
     'description' => 'Debug drupanium',
     'page callback' => 'drupal_get_form',
@@ -14,14 +14,14 @@ function drupanium_debug_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
   
-  $items['drupanium/debug/intro'] = array(
+  $items['drupanium/intro'] = array(
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'title' => 'Debug configuration',
     'weight' => -100,
   );
   
   // Search node
-  $items['drupanium/debug/search_node'] = array(
+  $items['drupanium/search_node'] = array(
     'type' => MENU_LOCAL_TASK,
     'title' => 'Search node',
     'page callback' => 'drupal_get_form',
@@ -31,7 +31,7 @@ function drupanium_debug_menu() {
     'file' => 'search_node.inc',
   );
   
-  $items['drupanium/debug/search_node/%'] = array(
+  $items['drupanium/search_node/%'] = array(
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_search_node_page_results',
     'page arguments' => array(3),
@@ -41,7 +41,7 @@ function drupanium_debug_menu() {
   );
   
   // Search user 
-  $items['drupanium/debug/search_user'] = array(
+  $items['drupanium/search_user'] = array(
     'type' => MENU_LOCAL_TASK,
     'title' => 'Search users',
     'page callback' => 'drupal_get_form',
@@ -51,7 +51,7 @@ function drupanium_debug_menu() {
     'file' => 'search_user.inc',
   );
   
-  $items['drupanium/debug/search_user/%'] = array(
+  $items['drupanium/search_user/%'] = array(
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_search_user_page_results',
     'page arguments' => array(3),
@@ -61,7 +61,7 @@ function drupanium_debug_menu() {
   );
   
   // Search user 
-  $items['drupanium/debug/user'] = array(
+  $items['drupanium/user'] = array(
     'type' => MENU_LOCAL_TASK,
     'title' => 'Get user',
     'page callback' => 'drupal_get_form',
@@ -71,7 +71,7 @@ function drupanium_debug_menu() {
     'file' => 'user.inc',
   );
   
-  $items['drupanium/debug/user/%'] = array(
+  $items['drupanium/user/%'] = array(
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_user_page_results',
     'page arguments' => array(3),
@@ -81,7 +81,7 @@ function drupanium_debug_menu() {
   );
   
   // Views
-  $items['drupanium/debug/views'] = array(
+  $items['drupanium/views'] = array(
     'type' => MENU_LOCAL_TASK,
     'page callback' => 'drupanium_debug_views_page',
     'access callback' => TRUE,
@@ -91,7 +91,7 @@ function drupanium_debug_menu() {
   );
   
   // Login
-  $items['drupanium/debug/login'] = array(
+  $items['drupanium/login'] = array(
     'type' => MENU_LOCAL_TASK,
     'page callback' => 'drupal_get_form',
     'page arguments' => array('drupanium_debug_user_login_page'),
@@ -102,7 +102,7 @@ function drupanium_debug_menu() {
   );
   
   // Login
-  $items['drupanium/debug/create_content'] = array(
+  $items['drupanium/create_content'] = array(
     'type' => MENU_LOCAL_TASK,
     'page callback' => 'drupal_get_form',
     'page arguments' => array('drupanium_debug_create_content_page'),
