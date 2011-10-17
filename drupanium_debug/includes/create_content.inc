@@ -115,7 +115,7 @@ function drupanium_debug_create_content_page_submit(&$form, &$form_state) {
       // Decode the response
       $elements = drupal_json_decode($new_node_response);
           
-      drupal_set_message("Getting information about the node " . $elements['title']');
+      drupal_set_message("Getting information about the node " . $elements['title']);
       drupal_set_message("This is the new node: "); 
       dsm($elements);
     }
