@@ -29,7 +29,7 @@ function drupanium_debug_user_page($form) {
 function drupanium_debug_user_page_submit(&$form, &$form_state) {
   $uid = $form_state['values']['uid'];
     
-  drupal_goto("drupanium/debug/user/" . $uid);
+  drupal_goto("drupanium/user/" . $uid);
 }
 
 /**

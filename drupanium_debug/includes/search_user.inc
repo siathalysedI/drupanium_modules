@@ -29,7 +29,7 @@ function drupanium_debug_search_user_page($form) {
 function drupanium_debug_search_user_page_submit(&$form, &$form_state) {
   $keys = $form_state['values']['keys'];
     
-  drupal_goto("drupanium/debug/search_user/" . $keys);
+  drupal_goto("drupanium/search_user/" . $keys);
 }
 
 /**
