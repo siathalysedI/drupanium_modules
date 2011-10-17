@@ -40,8 +40,6 @@ function drupanium_debug_user_page_submit(&$form, &$form_state) {
 function drupanium_debug_user_page_results($uid) {
   drupal_set_title(t("Getting user with uid ") . $uid);
   
-  $output = "";
-  
   // Get the URI
   $uri = variable_get("drupanium_user") . $uid . '.json';
   
@@ -52,20 +50,16 @@ function drupanium_debug_user_page_results($uid) {
   $response = file_get_contents($uri);
   
   // Decode the response
-  $elements = drupal_json_decode($response);
+  $user = drupal_json_decode($response);
   
   // Print the elements using devel
-  dsm($elements);
+  dsm($user);
   
-  // Loop trought the elements array
-  foreach($elements as $element) {
-    
-    // Build the array $data with the element's title
-    $data[] = $element['name'];
-  }
+  $data[] = "Username: " . $user['name'];
+  $data[] = "E-mail: " . $user['mail'];
+  $data[] = "UID: " . $user['uid'];
   
-  // Output the list
-  $output .= theme("item_list", array('items' => $data));
+  $output = theme("item_list", array('items' => $data));
   
   return $output;  
 }

@@ -118,7 +118,7 @@ function drupanium_debug_intro_page($form) {
   $form = array();
 	
 	$form['message'] = array(
-		'#markup' => '<p>' . t("Configure the following paths. Those paths will be used to demonstrate functionality. If you have Drupanium installed on this site is recommended to leave the default paths. Be aware that any possible error might be caused by wrong paths set here so be careful and double check them before you submit a bug") . '</p>',
+		'#markup' => '<p>' . t("Configure the following paths. Those paths will be used to demonstrate functionality. If you have Drupanium installed on this site is recommended to leave the default paths. Be aware that any possible error might be caused by wrong paths set here so be careful and double check them before you submit a bug. Please save the configuration as it is so Drupanium can detect the paths.") . '</p>',
 	);
   
   $form['drupanium_search_node'] = array(
@@ -159,7 +159,7 @@ function drupanium_debug_intro_page($form) {
   $form['drupanium_create_content'] = array(
     '#type' => 'textfield',
     '#title' => t("URI to REST Server / Create content"),
-    '#default_value' => variable_get("drupanium_create_content", $base_url . '/api/rest/node/create/'),
+    '#default_value' => variable_get("drupanium_create_content", $base_url . '/api/rest/node/'),
     '#description' => t("Enter the full URI to the REST Server and the create node resource")
   );
   

@@ -76,7 +76,13 @@ function drupanium_debug_create_content_page_submit(&$form, &$form_state) {
     
     $node = array(
       	'title' => $title,
-        'body' => $body,
+        'body' => array(
+					'und' => array(
+						0 => array(
+							'value' => $body,	
+						)
+					)
+				),
         'type' => 'article',
     );
     

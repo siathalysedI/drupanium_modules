@@ -71,6 +71,8 @@ function drupanium_debug_user_login_page_submit(&$form, &$form_state) {
   
   // Check if login was successful
   if ($response->code == 200) {
+    drupal_set_message("Login successful. Session name is: " . $auth["session_name"] . " and Session ID is: " . $auth["sessid"]);
+    
     // Now recycle the login cookie we recieved in the first request
     $options['headers']['Cookie'] = $auth['session_name'] . '=' . $auth['sessid'];
     $uid = 1;
@@ -81,7 +83,7 @@ function drupanium_debug_user_login_page_submit(&$form, &$form_state) {
     $options['method'] = 'GET';
     $user_requested = drupal_http_request(variable_get("drupanium_user") . $uid . '.json', $options);
     
-    drupal_set_message("user Requested");
+    drupal_set_message("Requesting user");
     dsm($user_requested);
     
     // Decode the response
