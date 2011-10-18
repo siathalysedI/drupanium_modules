@@ -34,6 +34,46 @@ function drupanium_debug_menu() {
     'file' => 'search_node.inc',
   );
   
+  // Get node
+  $items['drupanium/node_get'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Node get',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("drupanium_debug_node_get_page"),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'node_get.inc',
+  );
+  
+  $items['drupanium/node_get/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupanium_debug_node_get_page_results',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'node_get.inc',
+  );
+  
+  // Get comment
+  $items['drupanium/comment_get'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Comment get',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("drupanium_debug_comment_get_page"),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'comment_get.inc',
+  );
+  
+  $items['drupanium/comment_get/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupanium_debug_comment_get_page_results',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'comment_get.inc',
+  );
+  
   // Search user 
   $items['drupanium/search_user'] = array(
     'type' => MENU_NORMAL_ITEM,
@@ -133,6 +173,20 @@ function drupanium_debug_intro_page($form) {
     '#title' => t("URI to REST Server / Search User Resource"),
     '#default_value' => variable_get("drupanium_search_user", $base_url . '/api/rest/search_user/retrieve.json'),
     '#description' => t("Enter the full URI to the REST Server and the search user retrieve resource")
+  );
+  
+  $form['drupanium_node'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / Node Resource"),
+    '#default_value' => variable_get("drupanium_node", $base_url . '/api/rest/node/'),
+    '#description' => t("Enter the full URI to the REST Server and the node resource")
+  );
+  
+  $form['drupanium_comment'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server / Comments Resource"),
+    '#default_value' => variable_get("drupanium_comment", $base_url . '/api/rest/comment/'),
+    '#description' => t("Enter the full URI to the REST Server and the comment resource")
   );
   
   $form['drupanium_user'] = array(
