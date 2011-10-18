@@ -54,6 +54,26 @@ function drupanium_debug_menu() {
     'file' => 'node_get.inc',
   );
   
+  // Get node comments
+  $items['drupanium/node_get_comments'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Node get comments',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("drupanium_debug_node_get_comments_page"),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'node_get_comments.inc',
+  );
+  
+  $items['drupanium/node_get_comments/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupanium_debug_node_get_comments_page_results',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'node_get_comments.inc',
+  );
+  
   // Get comment
   $items['drupanium/comment_get'] = array(
     'type' => MENU_NORMAL_ITEM,
