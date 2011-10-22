@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Implements hook_permissions
+ */
+function drupanium_debug_permission() {
+  return array(
+    'access drupanium debug' => array(
+      'title' => t('Access Drupanium Debug'), 
+      'description' => t('Use Drupanium Debug module'),
+    ),
+  );
+}
+
+/**
  * Implements hook_menu().
  */
 function drupanium_debug_menu() {
@@ -10,7 +22,7 @@ function drupanium_debug_menu() {
     'description' => 'Debug drupanium',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('drupanium_debug_intro_page'),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'type' => MENU_NORMAL_ITEM,
   );
   
@@ -20,7 +32,7 @@ function drupanium_debug_menu() {
     'title' => 'Search node',
     'page callback' => 'drupal_get_form',
     'page arguments' => array("drupanium_debug_search_node_page"),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'search_node.inc',
   );
@@ -29,7 +41,7 @@ function drupanium_debug_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_search_node_page_results',
     'page arguments' => array(2),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'search_node.inc',
   );
@@ -40,7 +52,7 @@ function drupanium_debug_menu() {
     'title' => 'Node get',
     'page callback' => 'drupal_get_form',
     'page arguments' => array("drupanium_debug_node_get_page"),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'node_get.inc',
   );
@@ -49,7 +61,7 @@ function drupanium_debug_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_node_get_page_results',
     'page arguments' => array(2),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'node_get.inc',
   );
@@ -60,7 +72,7 @@ function drupanium_debug_menu() {
     'title' => 'Node get comments',
     'page callback' => 'drupal_get_form',
     'page arguments' => array("drupanium_debug_node_get_comments_page"),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'node_get_comments.inc',
   );
@@ -69,7 +81,7 @@ function drupanium_debug_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_node_get_comments_page_results',
     'page arguments' => array(2),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'node_get_comments.inc',
   );
@@ -80,7 +92,7 @@ function drupanium_debug_menu() {
     'title' => 'Comment get',
     'page callback' => 'drupal_get_form',
     'page arguments' => array("drupanium_debug_comment_get_page"),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'comment_get.inc',
   );
@@ -89,7 +101,7 @@ function drupanium_debug_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_comment_get_page_results',
     'page arguments' => array(2),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'comment_get.inc',
   );
@@ -100,7 +112,7 @@ function drupanium_debug_menu() {
     'title' => 'Search users',
     'page callback' => 'drupal_get_form',
     'page arguments' => array("drupanium_debug_search_user_page"),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'search_user.inc',
   );
@@ -109,7 +121,7 @@ function drupanium_debug_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_search_user_page_results',
     'page arguments' => array(2),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'search_user.inc',
   );
@@ -120,7 +132,7 @@ function drupanium_debug_menu() {
     'title' => 'Get user',
     'page callback' => 'drupal_get_form',
     'page arguments' => array("drupanium_debug_user_page"),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'user.inc',
   );
@@ -129,7 +141,7 @@ function drupanium_debug_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'drupanium_debug_user_page_results',
     'page arguments' => array(2),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'user.inc',
   );
@@ -138,7 +150,7 @@ function drupanium_debug_menu() {
   $items['drupanium/views'] = array(
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'drupanium_debug_views_page',
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'title' => 'Views',
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'views.inc',
@@ -149,7 +161,7 @@ function drupanium_debug_menu() {
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'drupal_get_form',
     'page arguments' => array('drupanium_debug_user_login_page'),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'title' => 'Login',
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'login.inc',
@@ -160,7 +172,7 @@ function drupanium_debug_menu() {
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'drupal_get_form',
     'page arguments' => array('drupanium_debug_create_content_page'),
-    'access callback' => TRUE,
+    'access arguments' => array("access drupanium debug"),
     'title' => 'Create content',
     'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
     'file' => 'create_content.inc',
