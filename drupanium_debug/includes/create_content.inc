@@ -5,6 +5,23 @@
  */
 function drupanium_debug_create_content_page($form) {
   $form = array();
+  
+  $form['user'] = array(
+    '#type' => 'fieldset',
+    '#title' => t("User"),
+  );
+  
+  $form['user']['username'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Username',
+    '#required' => TRUE,
+  );
+  
+  $form['user']['password'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Password',
+  	'#required' => TRUE,
+  );
     
   $form['title'] = array(
     '#type' => 'textfield',
@@ -38,8 +55,8 @@ function drupanium_debug_create_content_page_submit(&$form, &$form_state) {
   drupal_set_message("URI is: " . $uri);
   
   $account = array(
-    'username' => "admin",
-    'password' => "admin",
+    'username' => $form_state['values']['username'],
+    'password' => $form_state['values']['password'],
   );
   
   $data = http_build_query($account, '', '&');
