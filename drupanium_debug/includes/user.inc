@@ -49,6 +49,9 @@ function drupanium_debug_user_page_results($uid) {
   // Get the file
   $response = file_get_contents($uri);
   
+  drupal_set_message("Response is: ");
+  dsm($response);
+  
   // Decode the response
   $user = drupal_json_decode($response);
   
