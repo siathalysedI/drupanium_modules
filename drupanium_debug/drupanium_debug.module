@@ -146,6 +146,17 @@ function drupanium_debug_menu() {
     'file' => 'user.inc',
   );
   
+  // Search user 
+  $items['drupanium/user_create'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Create user',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("drupanium_debug_user_create_page"),
+    'access arguments' => array("access drupanium debug"),
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'user_create.inc',
+  );
+  
   // Views
   $items['drupanium/views'] = array(
     'type' => MENU_NORMAL_ITEM,
