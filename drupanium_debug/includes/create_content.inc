@@ -102,6 +102,8 @@ function drupanium_debug_create_content_page_submit(&$form, &$form_state) {
 				),
         'type' => 'article',
     );
+		
+		drupal_set_message(check_plain(drupal_json_encode($node)));
     
     $query = http_build_query($node, '', '&');
     
