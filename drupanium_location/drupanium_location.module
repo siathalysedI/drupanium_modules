@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Drupanium Location feature.
+ */
+
+include_once('drupanium_location.features.inc');
