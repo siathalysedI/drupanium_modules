@@ -189,6 +189,28 @@ function drupanium_debug_menu() {
     'file' => 'create_content.inc',
   );
   
+  // isflag
+  $items['drupanium/flag'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupanium_debug_flag_page'),
+    'access arguments' => array("access drupanium debug"),
+    'title' => 'Flag a node',
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'flag.inc',
+  );
+  
+  // isflag
+  $items['drupanium/isflag'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupanium_debug_isflag_page'),
+    'access arguments' => array("access drupanium debug"),
+    'title' => 'Is flagged',
+    'file path' => drupal_get_path("module", "drupanium_debug") . '/includes',
+    'file' => 'flag.inc',
+  );
+  
   return $items;
 }
 
@@ -203,6 +225,13 @@ function drupanium_debug_intro_page($form) {
 	$form['message'] = array(
 		'#markup' => '<p>' . t("Configure the following paths. Those paths will be used to demonstrate functionality. If you have Drupanium installed on this site is recommended to leave the default paths. Be aware that any possible error might be caused by wrong paths set here so be careful and double check them before you submit a bug. Please save the configuration as it is so Drupanium can detect the paths.") . '</p>',
 	);
+  
+  $form['drupanium_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t("URI to REST Server"),
+    '#default_value' => variable_get("drupanium_url", $base_url . '/api/rest/'),
+    '#description' => t("Enter the full URI to the REST Server of the site, this will be used for some services")
+  );
   
   $form['drupanium_search_node'] = array(
     '#type' => 'textfield',
@@ -259,6 +288,8 @@ function drupanium_debug_intro_page($form) {
     '#default_value' => variable_get("drupanium_create_content", $base_url . '/api/rest/node/'),
     '#description' => t("Enter the full URI to the REST Server and the create node resource")
   );
+  
+  
   
   return system_settings_form($form);
 }
